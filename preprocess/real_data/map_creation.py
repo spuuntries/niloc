@@ -54,10 +54,10 @@ def gen_threshold_map(likelihood, sigma=1.0, thres=0.5):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('data_dir', type=str, help="Directory containing hdf5 files")
-    parser.add_argument('data_list', type=str, default=None, help="[Optional] data_list")
-    parser.add_argument('map_dpi', type=float, default=10., help="image pixels per meter")
-    parser.add_argument('visualize', action="store_true")
+    parser.add_argument('--data_dir', type=str, required=True, help="Directory containing hdf5 files")
+    parser.add_argument('--data_list', type=str, default=None, help="[Optional] data_list")
+    parser.add_argument('--map_dpi', type=float, default=10., help="image pixels per meter")
+    parser.add_argument('--visualize', action="store_true", help="Flag to visualize the maps")
     args = parser.parse_args()
 
     if args.data_list is None:
