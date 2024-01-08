@@ -22,7 +22,7 @@ Our dataset can be downloaded from [Dropbox](https://www.dropbox.com/scl/fo/uux0
 
 If a floorplan is unavailble,  we generate an occupancy map from ground-truth trajectories
 ```
-python real_data/map_creation.py <data folder containing hdf5 files> --map_dpi <resolution - pixels per meter>
+python real_data/map_creation.py --data_dir=<data folder containing hdf5 files> --map_dpi=<resolution - pixels per meter>
 ```
 The result `floorplan.png` will be saved in the data folder.
 
@@ -37,7 +37,7 @@ python real_data/flood_fill.py <Path to occupancy map or floorplan image>
 We perform distance-based sampling on input trajectories, selecting one sample for each `1/<resolution>` meters travelled.
 
 ```
-python preprocess/real_data/distance_sample.py --data_dir <data folder containing hdf5 files> --map_dpi <resolution - pixels per meter> --out_dir <folder to save results>
+python preprocess/real_data/distance_sample.py --data_dir=<data folder containing hdf5 files> --map_dpi=<resolution - pixels per meter> --out_dir=<folder to save results>
 ```
 The program outputs a txt file per trajectory containing following columns:
  - time (seconds)
@@ -50,7 +50,7 @@ We generate synthetic data using A* algorithm and smooth the results using B-spl
 
 The configurations for data generation is in `config/synthetic_data.yaml`
 ```
-python preprocess/gen_synthic_data.py
+python preprocess/gen_synthetic_data.py
 ```
 The program outputs a txt file similar to 1.3. where timestamp is the frame number and trajectory from ronin is the smoothed synthetic trajectory.
 
