@@ -206,7 +206,7 @@ def launch_train(cfg: DictConfig) -> None:
             periodic_checkpoint_callback,
             early_stopping,
         ],
-        plugins=pl.plugins.DDPPlugin(find_unused_parameters=True),
+        plugins=pl.plugins.DDPStrategy(find_unused_parameters=True),
         **trainer_cfg,
     )
 
