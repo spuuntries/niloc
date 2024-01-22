@@ -195,7 +195,6 @@ def launch_train(cfg: DictConfig) -> None:
 
     # construct trainer
     trainer = pl.Trainer(
-        gpus=cfg.train_cfg.gpus,
         distributed_backend=cfg.train_cfg.accelerator,
         max_epochs=cfg.train_cfg.epochs,
         resume_from_checkpoint=cfg.train_cfg.resume_from_checkpoint,
@@ -206,7 +205,7 @@ def launch_train(cfg: DictConfig) -> None:
             periodic_checkpoint_callback,
             early_stopping,
         ],
-        plugins=pl.strategies.DDPStrategy(find_unused_parameters=True),
+        strategy="ddp",
         **trainer_cfg,
     )
 
