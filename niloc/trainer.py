@@ -179,7 +179,7 @@ def launch_train(cfg: DictConfig) -> None:
         dirpath=filepath,
         filename=ckpt_format,
         save_top_k=-1,  # save all checkpoints
-        period=cfg.train_cfg.get("periodic_save_interval", 10),
+        # period=cfg.train_cfg.get("periodic_save_interval", 10),
     )
     lr_monitor = pl.callbacks.LearningRateMonitor(logging_interval="epoch")
     early_stopping = pl.callbacks.EarlyStopping(
