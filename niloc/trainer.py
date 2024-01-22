@@ -195,7 +195,6 @@ def launch_train(cfg: DictConfig) -> None:
 
     # construct trainer
     trainer = pl.Trainer(
-        distributed_backend=cfg.train_cfg.accelerator,
         max_epochs=cfg.train_cfg.epochs,
         resume_from_checkpoint=cfg.train_cfg.resume_from_checkpoint,
         logger=tb_logger,
