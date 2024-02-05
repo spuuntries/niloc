@@ -32,15 +32,12 @@ tasks = {
 def get_checkpoints(file_name):
     checkpoints = {}
     parent_dir = osp.dirname(file_name)
-    with open(file_name, 'rb') as f:
-        result = chardet.detect(f.read())
-        f.seek(0) # Reset file pointer to beginning
-        lines = f.read().decode(result['encoding']).splitlines()
-    for s in lines:
-        if len(s.strip()) > 0 and s[0] != '#':
-            c = s.split()
-            checkpoints[c[0]] = osp.abspath(osp.join(parent_dir, c[1]))
-            assert osp.exists(checkpoints[c[0]]), f"Cannot find checkpoint {c[0]}: {checkpoints[c[0]]}"
+    with open(file_name) as f:
+        for s in f.readlines():
+            if len(s.strip()) > 0 and s[0] != '#':
+                c = s.split()
+                checkpoints[c[0]] = osp.abspath(osp.join(parent_dir, c[1]))
+                assert osp.exists(checkpoints[c[0]]), f"Cannot find checkpoint {c[0]}: {checkpoints[c[0]]}"
     print(f"Found {len(checkpoints)} checkpoints")
     print(checkpoints)
     return checkpoints
