@@ -47,7 +47,7 @@ train_cfg:
   resume_from_checkpoint : null
   # path to checkpoint to only load weights
   load_weights_only: false
-  gpus: 0
+  gpus: 1
   # single node training (including multi-gpu) should use 'dp', distributed parallel
   # other models are used in multi-node training.
   accelerator: null # dp, ddp, ddp2, ddp_spawn
@@ -74,8 +74,8 @@ test_cfg:
   save_output_trajectory: true
 
   # save plots/videos
-  full_traj_heatmap: false
-  individual_traj_heatmap: false
+  full_traj_heatmap: true
+  individual_traj_heatmap: true
   full_error_bar: true
   # [Optional] required for tensorboard-video
   ffmpeg_path: null
